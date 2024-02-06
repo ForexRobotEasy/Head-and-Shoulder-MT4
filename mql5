@@ -1,0 +1,77 @@
+
+//+------------------------------------------------------------------+
+//|                                         Head and Shoulder MT4     |
+//|                     Developer's Site: forexroboteasy.com         |
+//|                           Development by: Forex Robot Easy Team  |
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//|                             Initialization                       |
+//+------------------------------------------------------------------+
+void OnInit()
+{
+    // Set up the scanner button
+    ButtonCreate(0, 'Scanner', 0, 10, 10, 100, 30);
+}
+
+//+------------------------------------------------------------------+
+//|                          Start scanning                            |
+//+------------------------------------------------------------------+
+void OnButtonClick(const int button)
+{
+    if (button == 0)
+    {
+        ScanMarket();
+    }
+}
+
+//+------------------------------------------------------------------+
+//|                        Scan the Forex market                      |
+//+------------------------------------------------------------------+
+void ScanMarket()
+{
+    // Get the total number of symbols
+    int totalSymbols = SymbolsTotal();
+
+    // Loop through all symbols
+    for (int i = 0; i < totalSymbols; i++)
+    {
+        // Get the symbol name
+        string symbol = SymbolName(i, false);
+
+        // Get the total number of timeframes
+        int totalTimeframes = PeriodsTotal();
+
+        // Loop through all timeframes
+        for (int j = 0; j < totalTimeframes; j++)
+        {
+            // Get the timeframe name
+            string timeframe = PeriodDescription(Period(j));
+
+            // Perform the market analysis for the symbol and timeframe
+            double analysisResult = PerformMarketAnalysis(symbol, Period(j));
+
+            // Print the result
+            Print('Symbol: ', symbol, ', Timeframe: ', timeframe, ', Analysis Result: ', analysisResult);
+        }
+    }
+}
+
+//+------------------------------------------------------------------+
+//|                Perform market analysis for a symbol               |
+//+------------------------------------------------------------------+
+double PerformMarketAnalysis(string symbol, int timeframe)
+{
+    // Perform the market analysis and calculate the analysis result
+
+    return analysisResult;
+}
+
+//+------------------------------------------------------------------+
+//|                         Program termination                       |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Clean up any resources used by the program
+}
+
